@@ -9,6 +9,20 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <!-- Telefone Address -->
+        <div class="mt-4">
+            <x-input-label for="telefone" :value="__('Telefone')" />
+            <x-text-input id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
+        </div>
+
+        <!-- Endereco Address -->
+        <div class="mt-4">
+            <x-input-label for="endereco" :value="__('Endereco')" />
+            <x-text-input id="endereco" class="block mt-1 w-full" type="text" name="endereco" :value="old('endereco')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('endereco')" class="mt-2" />
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
