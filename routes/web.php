@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AlunoMiddleware;
+use App\Http\Middleware\HomeMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,5 +31,9 @@ Route::middleware(['auth', AlunoMiddleware::class])->group(function () {
         return view('dashboard-aluno');
     })->name('home');
 });
+
+Route::get('/home', function () {
+    // esse retorno nunca será usado, o middleware intercepta
+})->middleware(['auth', HomeMiddleware::class])->name('home');
 
 require __DIR__.'/auth.php';
