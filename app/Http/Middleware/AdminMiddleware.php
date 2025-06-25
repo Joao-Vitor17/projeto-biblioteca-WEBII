@@ -18,10 +18,10 @@ class AdminMiddleware
     {
         $user = Auth::user();
 
-        if(!$user || $user->aluno) {
-            return redirect()->route('login');
+        if($user->role == 'admin') {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect()->route('login');
     }
 }

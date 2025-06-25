@@ -24,7 +24,7 @@ class HomeMiddleware
 
         // Se estiver acessando "/home", redireciona para a view correta
         if ($request->is('home')) {
-            if (!$user->aluno) {
+            if ($user->role == 'admin') {
                 return response()->view('dashboard-admin');
             }
             return response()->view('dashboard-aluno');

@@ -18,10 +18,10 @@ class AlunoMiddleware
     {
         $user = Auth::user();
 
-        if(!$user || !$user->aluno) {
-            return redirect()->route('login');
+        if($user->role == 'aluno') {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect()->route('login');
     }
 }
