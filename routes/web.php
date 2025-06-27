@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AlunoMiddleware;
@@ -21,15 +22,18 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/home', function () {
-        return view('dashboard-admin');
-    })->name('home');
+    Route::prefix('home')->group(function () {
+        Route::resource('/categorias', CategoriaController::class);
+    });
+    // Route::get('/home', function () {
+    //     return view('dashboard-admin');
+    // })->name('home');
 });
 
 Route::middleware(['auth', AlunoMiddleware::class])->group(function () {
-    Route::get('/home', function () {
-        return view('dashboard-aluno');
-    })->name('home');
+    // Route::get('/home', function () {
+    //     return view('dashboard-aluno');
+    // })->name('home');
 });
 
 Route::get('/home', function () {
