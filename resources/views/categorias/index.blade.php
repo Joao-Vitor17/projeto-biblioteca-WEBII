@@ -28,12 +28,10 @@
                     <td>{{ $categoria->nome }}</td>
                     <td>
                         <div class="d-flex justify-content-end gap-2">
-                            <form action="#" method="get">
+                            <form action="{{ route('categorias.show', $categoria->id) }}" method="get">
                                 <button type="submit" class="btn btn-success btn-sm">Ver</button>
                             </form>
-                            <form action="#" method="post">
-                                @csrf
-                                @method('put')
+                            <form action="{{ route('categorias.edit', $categoria->id) }}" method="get">
                                 <button type="submit" class="btn btn-info btn-sm">Editar</button>
                             </form>
                             <form action="#" method="post" onsubmit="return confirm('Deseja realmente deletar esta categoria?');">
