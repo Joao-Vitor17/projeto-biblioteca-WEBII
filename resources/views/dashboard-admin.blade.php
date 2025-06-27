@@ -4,7 +4,7 @@
 
 @section('content')
     <h1 class="mb-4">Bem-vindo, {{ Auth::user()->name }}</h1>
-    <button class="btn btn-primary">Clique aqui, admin!</button>
+    <a href="{{ route('categorias.index') }}" class="btn btn-primary">Gerenciar Categorias</a>
 @endsection
 {{-- <x-app-layout>
     <x-slot name="header">
