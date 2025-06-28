@@ -34,7 +34,7 @@
                             <form action="{{ route('categorias.edit', $categoria->id) }}" method="get">
                                 <button type="submit" class="btn btn-info btn-sm">Editar</button>
                             </form>
-                            <form action="#" method="post" onsubmit="return confirm('Deseja realmente deletar esta categoria?');">
+                            <form action="{{ route('categorias.destroy', $categoria->id) }}" method="post" onsubmit="return confirm('Deseja realmente deletar esta categoria?');">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-warning btn-sm">Deletar</button>

@@ -62,6 +62,7 @@ class CategoriaController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        Categoria::destroy($id);
+        return redirect()->route('categorias.index')->with(['success' => 'Categoria excluída com sucesso!!']);
     }
 }
