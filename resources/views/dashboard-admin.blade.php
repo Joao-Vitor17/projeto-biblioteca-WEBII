@@ -3,8 +3,11 @@
 @section('title', 'Tela Inicial')
 
 @section('content')
-    <h1 class="mb-4">Bem-vindo, {{ Auth::user()->name }}</h1>
-    <a href="{{ route('categorias.index') }}" class="btn btn-primary">Gerenciar Categorias</a>
+    <div class="d-flex flex-column gap-2">
+        <h1 class="mb-4">Bem-vindo, {{ Auth::user()->name }}</h1>
+        <a href="{{ route('categorias.index') }}" class="btn btn-primary align-self-start">Gerenciar Categorias</a>
+        <a href="{{ route('autores.index') }}" class="btn btn-primary align-self-start">Gerenciar Autores</a>
+    </div>
 @endsection
 {{-- <x-app-layout>
     <x-slot name="header">
