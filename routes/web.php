@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::prefix('home')->group(function () {
         Route::resource('/categorias', CategoriaController::class);
+        Route::resource('/autores', AutorController::class);
     });
     // Route::get('/home', function () {
     //     return view('dashboard-admin');
