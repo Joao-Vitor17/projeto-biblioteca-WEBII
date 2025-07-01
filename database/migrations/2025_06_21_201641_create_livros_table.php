@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('ano_publicacao');
             $table->integer('estoque');
             $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
