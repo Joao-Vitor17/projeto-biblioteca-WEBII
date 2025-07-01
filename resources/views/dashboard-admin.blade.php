@@ -7,6 +7,7 @@
         <h1 class="mb-4">Bem-vindo, {{ Auth::user()->name }}</h1>
         <a href="{{ route('categorias.index') }}" class="btn btn-primary align-self-start">Gerenciar Categorias</a>
         <a href="{{ route('autores.index') }}" class="btn btn-primary align-self-start">Gerenciar Autores</a>
+        <a href="{{ route('livros.index') }}" class="btn btn-primary align-self-start">Gerenciar Livros</a>
     </div>
 @endsection
 {{-- <x-app-layout>
