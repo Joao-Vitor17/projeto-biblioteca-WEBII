@@ -12,9 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')" style="text-decoration: none">
+                        {{ __('Home') }}
                     </x-nav-link>
+                    
+                    @if (Auth::user()->role == 'admin')
+                        <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.index')" style="text-decoration: none">
+                            {{ __('Categorias') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('autores.index')" :active="request()->routeIs('autores.index')" style="text-decoration: none">
+                            {{ __('Autores') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('livros.index')" :active="request()->routeIs('livros.index')" style="text-decoration: none">
+                            {{ __('Livros') }}
+                        </x-nav-link>
+                    @else
+                        {{-- aqui vai ser a navbar do aluno --}}
+                    @endif
                 </div>
             </div>
 
