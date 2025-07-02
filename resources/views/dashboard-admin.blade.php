@@ -8,6 +8,7 @@
         <a href="{{ route('categorias.index') }}" class="btn btn-primary align-self-start">Gerenciar Categorias</a>
         <a href="{{ route('autores.index') }}" class="btn btn-primary align-self-start">Gerenciar Autores</a>
         <a href="{{ route('livros.index') }}" class="btn btn-primary align-self-start">Gerenciar Livros</a>
+        <a href="{{ route('autor-livro.create') }}" class="btn btn-primary align-self-start">Gerenciar Autores nos Livros</a>
     </div>
 @endsection
 {{-- <x-app-layout>
