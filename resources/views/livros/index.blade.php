@@ -18,6 +18,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">TÍTULO</th>
+                <th scope="col">ESTOQUE</th>
                 <th scope="col">AÇÕES</th>
             </tr>
         </thead>
@@ -26,6 +27,11 @@
                 <tr>
                     <td class="text-center">{{ $livro->id }}</td>
                     <td>{{ $livro->titulo }}</td>
+                    @if ($livro->estoque > 0)
+                        <td>Disponível</td>
+                    @else
+                        <td>Indisponível</td>
+                    @endif
                     <td>
                         <div class="d-flex justify-content-end gap-2">
                             <form action="{{ route('livros.show', $livro->id) }}" method="get">
