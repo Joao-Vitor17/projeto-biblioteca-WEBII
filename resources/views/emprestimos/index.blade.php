@@ -41,9 +41,13 @@
                             <form action="{{ route('emprestimos.show', $emprestimo->id) }}" method="get">
                                 <button type="submit" class="btn btn-success btn-sm">Ver</button>
                             </form>
-                            <form action="{{ route('emprestimos.edit', $emprestimo->id) }}" method="get">
-                                <button type="submit" class="btn btn-info btn-sm">Devolver</button>
-                            </form>
+                            @if ($emprestimo->data_devolucao_real == null)    
+                                <form action="{{ route('emprestimos.update', $emprestimo->id) }}" method="post" onsubmit="return confirm('Deseja realmente devolver este livro?');">
+                                    @csrf
+                                    @method('put')
+                                    <button type="submit" class="btn btn-info btn-sm">Devolver</button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

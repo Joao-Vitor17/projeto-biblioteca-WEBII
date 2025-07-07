@@ -59,9 +59,13 @@ class EmprestimoController extends Controller
         //
     }
 
-    public function update(Request $request, string $id)
+    public function update(string $id)
     {
-        //
+        Emprestimo::find($id)->update([
+            'data_devolucao_real' => Carbon::now()->format('Y-m-d'),
+        ]);
+
+        return redirect()->route('emprestimos.index')->with(['success' => 'Livro devolvido com sucesso!!']);
     }
 
     public function destroy(string $id)
