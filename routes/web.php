@@ -4,6 +4,7 @@ use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\AutorLivroController;
+use App\Http\Controllers\EmprestimoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AlunoMiddleware;
@@ -38,6 +39,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 });
 
 Route::middleware(['auth', AlunoMiddleware::class])->group(function () {
+    Route::prefix('home')->group(function () {
+        Route::resource('/emprestimos', EmprestimoController::class);
+    });
     // Route::get('/home', function () {
     //     return view('dashboard-aluno');
     // })->name('home');
