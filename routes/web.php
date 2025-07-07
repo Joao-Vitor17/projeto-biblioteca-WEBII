@@ -41,6 +41,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 Route::middleware(['auth', AlunoMiddleware::class])->group(function () {
     Route::prefix('home')->group(function () {
         Route::resource('/emprestimos', EmprestimoController::class);
+        Route::get('/visualizar-livros', [LivroController::class, 'index'])->name('livros.listar');
+        Route::get('/visualizar-livros/{id}', [LivroController::class, 'show'])->name('livros.mostrar');
     });
     // Route::get('/home', function () {
     //     return view('dashboard-aluno');
