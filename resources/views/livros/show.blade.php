@@ -55,5 +55,5 @@
         </tbody>
     </table>
     
-    <a href="{{ route('livros.index') }}" class="btn btn-primary">Voltar</a>
+    <a href="{{ route(Auth::user()->role == 'admin' ? 'livros.index' : 'livros.listar') }}" class="btn btn-primary">Voltar</a>
 @endsection

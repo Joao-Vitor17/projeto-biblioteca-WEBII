@@ -11,7 +11,9 @@
         </div>
     @endif
 
-    <a href="{{ route('livros.create') }}" class="btn btn-primary mb-4">Cadastrar Novo Livro</a>
+    @if (Auth::user()->role == 'admin')
+        <a href="{{ route('livros.create') }}" class="btn btn-primary mb-4">Cadastrar Novo Livro</a>
+    @endif
 
     <table class="table table-hover table-bordered align-middle">
         <thead class="table-light text-center">
@@ -34,17 +36,19 @@
                     @endif
                     <td>
                         <div class="d-flex justify-content-end gap-2">
-                            <form action="{{ route('livros.show', $livro->id) }}" method="get">
+                            <form action="{{ route(Auth::user()->role == 'admin' ? 'livros.show' : 'livros.mostrar', $livro->id) }}" method="get">
                                 <button type="submit" class="btn btn-success btn-sm">Ver</button>
                             </form>
-                            <form action="{{ route('livros.edit', $livro->id) }}" method="get">
-                                <button type="submit" class="btn btn-info btn-sm">Editar</button>
-                            </form>
-                            <form action="{{ route('livros.destroy', $livro->id) }}" method="post" onsubmit="return confirm('Deseja realmente deletar este livro?');">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-warning btn-sm">Deletar</button>
-                            </form>
+                            @if (Auth::user()->role == 'admin')
+                                <form action="{{ route('livros.edit', $livro->id) }}" method="get">
+                                    <button type="submit" class="btn btn-info btn-sm">Editar</button>
+                                </form>
+                                <form action="{{ route('livros.destroy', $livro->id) }}" method="post" onsubmit="return confirm('Deseja realmente deletar este livro?');">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-warning btn-sm">Deletar</button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
