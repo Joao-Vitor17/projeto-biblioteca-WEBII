@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->date('data_emprestimo');
             $table->date('data_devolucao_prevista');
-            $table->date('data_devolucao_real');
+            $table->date('data_devolucao_real')->nullable();
             $table->string('descricao');
             $table->foreignId('aluno_id')->constrained()->onDelete('cascade');
             $table->foreignId('livro_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
