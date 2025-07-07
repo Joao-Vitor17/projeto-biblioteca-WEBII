@@ -51,7 +51,8 @@ class EmprestimoController extends Controller
 
     public function show(string $id)
     {
-        //
+        $emprestimo = Emprestimo::find($id);
+        return view('emprestimos.show')->with('emprestimo', $emprestimo);
     }
 
     public function edit(string $id)
