@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use App\Models\Emprestimo;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,21 @@ class GerarEmprestimoController extends Controller
         $dompdf = new Dompdf();
 
         $html = View::make('pdf.emprestimos', ['user' => $user, 'emprestimos' => $emprestimos])->render();
+        
+        $dompdf->loadHtml($html);
+
+        $dompdf->render();
+
+        $dompdf->stream();
+    }
+    
+    public function alunosEmitirPdf()
+    {
+        $user = Auth::user();
+        $alunos = Aluno::all();
+        $dompdf = new Dompdf();
+
+        $html = View::make('pdf.emprestimos-alunos', ['user' => $user, 'alunos' => $alunos])->render();
         
         $dompdf->loadHtml($html);
 

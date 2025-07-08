@@ -33,6 +33,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::resource('/livros', LivroController::class);
         Route::get('/autor-livro/create', [AutorLivroController::class, 'create'])->name('autor-livro.create');
         Route::post('/autor-livro/create', [AutorLivroController::class, 'store'])->name('autor-livro.store');
+        Route::get('/emprestimos-alunos', [GerarEmprestimoController::class, 'alunosEmitirPdf'])->name('emprestimos.alunos');
     });
     // Route::get('/home', function () {
     //     return view('dashboard-admin');
