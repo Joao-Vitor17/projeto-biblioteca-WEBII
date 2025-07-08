@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\AutorLivroController;
 use App\Http\Controllers\EmprestimoController;
+use App\Http\Controllers\GerarEmprestimoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\AlunoMiddleware;
@@ -43,6 +44,7 @@ Route::middleware(['auth', AlunoMiddleware::class])->group(function () {
         Route::resource('/emprestimos', EmprestimoController::class);
         Route::get('/visualizar-livros', [LivroController::class, 'index'])->name('livros.listar');
         Route::get('/visualizar-livros/{id}', [LivroController::class, 'show'])->name('livros.mostrar');
+        Route::get('/emprestimos-pdf', [GerarEmprestimoController::class, 'emitirPdf'])->name('emprestimos.emitir');
     });
     // Route::get('/home', function () {
     //     return view('dashboard-aluno');
