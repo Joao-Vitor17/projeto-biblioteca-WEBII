@@ -62,9 +62,12 @@ class EmprestimoController extends Controller
 
     public function update(string $id)
     {
-        Emprestimo::find($id)->update([
+        $emprestimo = Emprestimo::find($id);
+        $emprestimo->update([
             'data_devolucao_real' => Carbon::now()->format('Y-m-d'),
         ]);
+
+        Livro::where('id', $emprestimo->livro_id)->increment('estoque');
 
         return redirect()->route('emprestimos.index')->with(['success' => 'Livro devolvido com sucesso!!']);
     }
