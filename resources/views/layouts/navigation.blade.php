@@ -28,6 +28,15 @@
                         </x-nav-link>
                     @else
                         {{-- aqui vai ser a navbar do aluno --}}
+                        <x-nav-link :href="route('livros.listar')" :active="request()->routeIs('livros.listar')" style="text-decoration: none">
+                            {{ __('Livros') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('emprestimos.index')" :active="request()->routeIs('emprestimos.index')" style="text-decoration: none">
+                            {{ __('Emprestimos') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('emprestimos.create')" :active="request()->routeIs('emprestimos.create')" style="text-decoration: none">
+                            {{ __('Realizar Emprestimo') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
